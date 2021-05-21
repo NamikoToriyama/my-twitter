@@ -1,7 +1,7 @@
 # My Twitter
 
-<img src="https://github.com/NamikoToriyama/my-twitter/blob/master/img/blog.png" width="80%">
-
+<img src="./img/blog.png" width="80%">
+<br>
 
 2021.5記述
 ## About
