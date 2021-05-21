@@ -11,6 +11,8 @@ Build@mercariのプログラムで作成。作成期間**5日**。
 
 - フロント `/cmd`
   - htmlとgoのテンプレート機能で作成
+  - サインアップ・サインイン機能はFirebaseで実現
+    - ただ若干のバグあり
 - サーバーサイド
   - GCPにデプロイしたのと、GCPのDatastore(おそらく)を使ってDBを実現
   - Docker-compose upでローカルでGCPのデバッグができる
