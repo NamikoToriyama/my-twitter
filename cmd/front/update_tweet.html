@@ -1,0 +1,66 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tweet</title>
+</head>
+<script>
+  function top() {
+    window.location.href = "/" 
+  }
+</script>
+<body>
+  
+  <div class="row">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">TimeLine</a></li>
+          <li><a href="/tweet">Tweet</a></li>
+          <li><a href="/signup">SignIn</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div style="width:70%;text-align: center;margin: 0 auto;">
+      <h2>Update Tweet</h2>
+      <form class="col s12" action="/update" method="post">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="tweetID" value="{{.TweetID}}">
+        <div class="row">
+          <div class="input-field col s12">
+
+            <!-- TODO: ログイン情報に変更して更新できないようにする {{.Username}} -->
+            <input id="username" type="text" class="validate" name="username" value="{{.Username}}">
+            <label for="username">Username</label>
+          </div>
+          <div class="input-field col s12">
+            <textarea id="textarea1" class="materialize-textarea" name="tweet">{{.TweetContext}}</textarea>
+            <label for="textarea1">Tweet</label>
+          </div>
+        </div>
+        <input type=submit onclick="top()">
+      </form>
+    </div>
+
+  </div>
+
+
+
+
+
+</body>
+
+</html>

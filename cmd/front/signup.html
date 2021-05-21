@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.3.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.3.0/firebase-ui-auth.css" />
+    
+    <script>
+        const config = {
+            apiKey: "{{.apiKey}}",
+            authDomain: "{{.authDomain}}",
+            databaseURL: "{{.databaseURL}}",
+            projectId: "{{.projectId}}",
+            storageBucket: "{{.storageBucket}}",
+            messagingSenderId: "{{.messagingSenderId}}",
+            appId: "{{.appId}}",
+        };
+
+        firebase.initializeApp(config);
+        const uiConfig = {
+            callbacks: {
+                signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+                    return true;
+                },
+                uiShown: function () {
+                    document.getElementById('loader').style.display = 'none';
+                }
+            },
+            // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+            signInFlow: 'popup',
+            signInSuccessUrl: 'my',
+            signInOptions: [
+                firebase.auth.EmailAuthProvider.PROVIDER_ID,
+            ],
+        };
+        // サインアップ/サインインフォームのUI
+        const ui = new firebaseui.auth.AuthUI(firebase.auth());
+        ui.start('#firebaseui-auth-container', uiConfig);
+
+        // ユーザのサインイン状態の判定
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                console.log('sign in : ', user);
+            } else {
+                console.log('sign out');
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav>
+          <ul>
+            <li><a href="/">TimeLine</a></li>
+            <li><a href="/tweet">Tweet</a></li>
+            <li><a href="/signup">SignIn</a></li>
+          </ul>
+        </nav>
+      </header>
+    <h1>Welcome to Sign Up Page!</h1>
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
+</body>
+
+</html>

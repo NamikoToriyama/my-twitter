@@ -1,0 +1,6 @@
+secret.yaml
+config.js
+
+gcp-key-file.*
+vendor
+.env

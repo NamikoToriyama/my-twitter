@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  go:
+    container_name: namiko-docker
+    build: docker
+
+    env_file:
+      - .env
+    volumes:
+      - .:/go/src/github.com/mercari/Week6/Week6:z
+    ports:
+      - 8080:8080
+      - 8000:8000
+    restart: 'no'
+    command: dev_appserver.py ./cmd/app.yaml --host=0.0.0.0 --admin_host=0.0.0.0 --support_datastore_emulator=False

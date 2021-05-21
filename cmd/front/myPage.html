@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+     <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <!--Let browser know website is optimized for mobile-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+     <!-- Add Firebase products that you want to use -->
+     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "{{.apiKey}}",
+            authDomain: "{{.authDomain}}",
+            databaseURL: "{{.databaseURL}}",
+            projectId: "{{.projectId}}",
+            storageBucket: "{{.storageBucket}}",
+            messagingSenderId: "{{.messagingSenderId}}",
+            appId: "{{.appId}}",
+        };
+        firebase.initializeApp(config);
+        // ユーザのサインイン状態の判定
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // サインインできてるとき
+                document.getElementById('message').innerHTML = "ようこそ " + user.displayName;
+                document.getElementById('image').src = user.photoURL;
+                document.getElementById('email').innerHTML = "Email: " + user.email;
+
+                console.log('sign in');
+            } else {
+                // No user is signed in.
+                console.log('sign out');
+                location.href = "/";
+            }
+        });
+
+        // ログアウト
+        function signOut() {
+            firebase.auth().signOut().then(function () {
+                console.log('success sign out.');
+            }).catch(function (error) {
+                console.log('error: ', error);
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav>
+          <ul>
+            <li><a href="/">TimeLine</a></li>
+            <li><a href="/tweet">Tweet</a></li>
+            <li><a href="/signup">SignIn</a></li>
+          </ul>
+        </nav>
+      </header>
+    <h1>Welcome to My Page!</h1>
+    <div id="message"></div>
+    <div id="email"></div>
+    <button class="waves-effect waves-light btn-small" onClick="signOut();">ログアウト</button>
+    
+</body>
+
+</html>
