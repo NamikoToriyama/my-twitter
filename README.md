@@ -14,9 +14,11 @@ Build@mercariのプログラムで作成。作成期間**5日**。
   - サインアップ・サインイン機能はFirebaseで実現
     - ただ若干のバグあり
 - サーバーサイド
-  - GCPにデプロイしたのと、GCPのDatastore(おそらく)を使ってDBを実現
+  - GCPにデプロイしたのと、GCPのGoogleCloudDatabaseをDBで使用
   - Docker-compose upでローカルでGCPのデバッグができる
+  - テストコードを頑張った
   - バックエンド重視のためフロントの見た目はちょっと微妙です。
+
 <br>
 
 以下2020.6記述
@@ -110,7 +112,7 @@ Provide authentication for your blog system (user name + password login):
 
 Ensure your code is properly tested:
 - [x] basic: unit tests
-- [ ] stretch: integration / e2e tests
+- [x] stretch: integration / e2e tests
 
 ### Stretch Goals:
 - [x] Deploy your application on a cloud provider - `GCP` 
