@@ -1,18 +1,20 @@
 # My Twitter
 
+![my-twitter](https://github.com/NamikoToriyama/my-twitter/tree/main/img/blog.png "サンプル")
+
 2021.5記述
 ## About
-Build@mercariのプログラムで作成。作成期間*5日*。
+Build@mercariのプログラムで作成。作成期間**5日**。
 
 忘れているため、以下の文章は若干怪しい。
 
-- クライアント `/cmd`
+- フロント `/cmd`
   - htmlとgoのテンプレート機能で作成
-- クライアント
+- サーバーサイド
   - GCPにデプロイしたのと、GCPのDatastore(おそらく)を使ってDBを実現
   - Docker-compose upでローカルでGCPのデバッグができる
   - バックエンド重視のためフロントの見た目はちょっと微妙です。
-
+<br>
 
 以下2020.6記述
 ## How to run this server
